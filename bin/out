@@ -73,6 +73,7 @@ fi
 # get image name
 IMG=$(jq -r .params.image_name < "$payload")
 TAG=$(jq -r .params.image_tag < "$payload")
+IMG="$IMG:$TAG"
 
 # get kube resource id
 RESOURCE_TYPE=$(jq -r .source.resource_type < "$payload")
