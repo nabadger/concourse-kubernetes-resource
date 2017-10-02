@@ -71,11 +71,8 @@ if [[ "$KUBE_URL" =~ https.* ]]; then
 fi
 
 # get image name
-IMG_FILE=$(jq -r .params.image_name < "$payload")
-IMG=$(cat "$IMG_FILE")
-TAG_FILE=$(jq -r .params.image_tag < "$payload")
-TAG=$(cat "$TAG_FILE")
-IMG="$IMG:$TAG"
+IMG=$(jq -r .params.image_name < "$payload")
+TAG=$(jq -r .params.image_tag < "$payload")
 
 # get kube resource id
 RESOURCE_TYPE=$(jq -r .source.resource_type < "$payload")
